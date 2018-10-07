@@ -1,0 +1,371 @@
+﻿@model MagusWeb.Models.Character
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    
+    
+
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="card text-white bg-info">
+                <div class="card-header">Tulajdonság</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Erő</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="strength" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="strengthFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Állóképesség</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="stamina" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="staminaFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Gyorsaság</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="agility" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="agilityFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Ügyesség</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="dexterity" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="dexterityFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Egészség</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="health" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="healthFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Szépség</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="beauty" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="beautyFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Intelligencia</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="intelligence" onchange="IntelligenceChange();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="intelligenceFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Akaraterő</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="willPower" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="willPowerFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Asztrál</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="astral" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="astralFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Érzékelés</label>
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" id="detection" onchange="GetValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                        <input type="text" class="form-control col-md-2" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="detectionFinal">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Átlag</label>
+                        <input type="text" class="form-control col-md-4 text-md-right" disabled="disabled" aria-label="Username" aria-describedby="basic-addon1" id="average">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-white bg-info">
+                <div class="card-header">Karakter</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Faj</label>
+                        @Html.DropDownList("Specie", null, htmlAttributes: new { @class = "form-control col-md-6", @id="SpecieDropdown" })
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Kaszt</label>
+                        <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Szint</label>
+                        <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" id="level" onchange="LevelChange();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Ép</label>
+                        <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Fp</label>
+                        <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Mana</label>
+                        <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-white bg-info">
+                <div class="card-header">Pszi</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Pszi iskola</label>
+                        @Html.DropDownList("Psi",ViewBag.Psi as SelectList,"Nincs", htmlAttributes: new { @class = "form-control dropdown", id="psiDropdown" })
+                    </div>
+                    <div class="input-group">
+                        <label class="input-group-text w-50" id="licenseEmaillabel">Pszi pont</label>
+                        <input type="text" class="form-control col-md-6" placeholder="0" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="psiFinal">
+                    </div>
+                    <div class="row">
+                        <div class="col justify-content-md-center">
+                            <div class="col-auto mr-auto">
+                                <label class="badge badge-secondary" id="licenseEmaillabel">Asztrális</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="col-auto mr-auto">
+                                <label class="badge badge-secondary" id="licenseEmaillabel">Mentális</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">TME</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="astralTME">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Statikus</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" id="astralStatic" onchange="SetPsiRelatedValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Dinamikus</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" id="astralDynamic" onchange="SetPsiRelatedValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Egyéb</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" id="astralOther" onchange="SetPsiRelatedValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Teljes</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="astralSum" >
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">TME</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="mentalTME">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Statikus</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" id="mentalStatic" onchange="SetPsiRelatedValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Dinamikus</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" id="mentalDynamic" onchange="SetPsiRelatedValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Egyéb</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" id="mentalOther" onchange="SetPsiRelatedValues();" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" >
+                            </div>
+                            <div class="input-group">
+                                <label class="input-group-text w-70" id="licenseEmaillabel">Teljes</label>
+                                <input type="text" class="form-control col-md-6" aria-label="Username" aria-describedby="basic-addon1" disabled="disabled" id="mentalSum">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@*<div class="">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create" class="btn btn-default" />
+    </div>
+</div>
+
+<div class="">
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var specie;
+        var strength;
+        var stamina;
+        var agility;
+        var dexterity;
+        var health;
+        var beauty;
+        var intelligence;
+        var astral;
+        var willPower;
+        var detection;
+        var level;
+        var psiType;
+
+        function GetValues() {
+            specie = $('#SpecieDropdown').val();
+            strength = $('#strength').val();
+            stamina = $('#stamina').val();
+            agility = $('#agility').val();
+            dexterity = $('#dexterity').val();
+            health = $('#health').val();
+            beauty = $('#beauty').val();
+            intelligence = $('#intelligence').val();
+            astral = $('#astral').val();
+            willPower = $('#willPower').val();
+            detection = $('#detection').val();
+            GetValuesFromServer();
+        };
+
+        function SetValues(data) {
+            $('#strengthFinal').val(data.Strength); 
+            $('#staminaFinal').val(data.Stamina);
+            $('#agilityFinal').val(data.Agility);
+            $('#dexterityFinal').val(data.Dexterity);
+            $('#healthFinal').val(data.Health);
+            $('#beautyFinal').val(data.Beauty);
+            $('#intelligenceFinal').val(data.Intelligence);
+            $('#astralFinal').val(data.Astral);
+            $('#willPowerFinal').val(data.WillPower);
+            $('#detectionFinal').val(data.Detection);
+            $('#average').val(data.Average);
+            SetPsiRelatedValues();
+        };
+
+        function GetValuesFromServer() {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetCharachterValues", "Characters")',
+                data: {
+                    specie: specie,
+                    strength: strength,
+                    stamina: stamina,
+                    agility: agility,
+                    dexterity: dexterity,
+                    health: health,
+                    beauty: beauty,
+                    intelligence: intelligence,
+                    astral: astral,
+                    willPower: willPower,
+                    detection: detection
+                },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: successFunc,
+                error: errorFunc
+            });
+
+            function successFunc(data, status) {
+                SetValues(data);
+            }
+
+            function errorFunc() {
+                alert('error');
+            }
+        };
+
+        function SetPsi() {
+            psiType = $('#psiDropdown').val();
+            level = $('#level').val();
+            var finalIntelligence = intelligence = $('#intelligenceFinal').val();
+
+            if (typeof (psiType) !== "undefined" && psiType)
+            {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("GetPsiForLevel", "Characters")',
+                    data: { psiType: psiType, level: level, intelligence: finalIntelligence},
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data) {
+                    $('#psiFinal').val(data); 
+                }
+
+                function errorFunc() {
+                    $('#psiFinal').val(0); 
+                }
+                
+            } else {
+                $('#psiFinal').val(0); 
+            }
+        };
+
+        function SetPsiRelatedValues() {
+            var astralFinal = $('#astralFinal').val();
+            var willPowerFinal = $('#willPowerFinal').val();
+            var astralStatic = $('#astralStatic').val();
+            var astralDynamic = $('#astralDynamic').val();
+            var astralOther = $('#astralOther').val();
+            var mentalStatic = $('#mentalStatic').val();
+            var mentalDynamic = $('#mentalDynamic').val();
+            var mentalOther = $('#mentalOther').val();
+            debugger;
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetPsiResistence", "Characters")',
+                data: {
+                    astral: astralFinal,
+                    willPower: willPowerFinal,
+                    astralStaticResistence: astralStatic,
+                    astralDynamicResistence: astralDynamic,
+                    astralOther: astralOther,
+                    mentalStaticResistence: mentalStatic,
+                    mentalDynamicResistence: mentalDynamic,
+                    mentalOther: mentalOther
+                },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: successFunc,
+                error: errorFunc
+            });
+
+            function successFunc(data) {
+                debugger;
+                $('#astralTME').val(data.AstralResistence.Tme); 
+                $('#astralSum').val(data.AstralResistence.Sum); 
+                $('#mentalTME').val(data.MentalResistence.Tme); 
+                $('#mentalSum').val(data.MentalResistence.Sum); 
+            }
+
+            function errorFunc() {
+                alert('Error');
+            }
+        };
+
+        $("#SpecieDropdown").change(function () {
+            GetValues();
+        }); 
+
+        $("#psiDropdown").change(function () {
+            SetPsi();
+        });
+
+        function LevelChange() {
+            SetPsi();
+        };
+
+        function IntelligenceChange() {
+            GetValues();
+            SetPsi();
+        }
+
+    </script>
+}

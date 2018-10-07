@@ -1,0 +1,226 @@
+﻿@model MagusWeb.Models.MagusClass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MagusClass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitiatingBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitiatingBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OffensiveBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffensiveBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OffensiveMinPerLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffensiveMinPerLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DefensiveBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DefensiveBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DefensiveMinPerLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DefensiveMinPerLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetingBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetingBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FighterModPerLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FighterModPerLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PainBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PainBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PainPerLevelNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PainPerLevelNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QualificationBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QualificationBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QualificationPerLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QualificationPerLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentagePerLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PercentagePerLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClimbBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClimbBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FallingBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FallingBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JumpBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JumpBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SneakingBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SneakingBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StealthBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StealthBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TightropeBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TightropeBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickpocketBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickpocketBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExploreTrapBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExploreTrapBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShutterBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShutterBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecureDoorSearchBasic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecureDoorSearchBasic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cube.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cube.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Psi1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Psi1.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

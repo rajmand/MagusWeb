@@ -1,0 +1,183 @@
+﻿@model IEnumerable<MagusWeb.Models.MagusClass>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitiatingBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OffensiveBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OffensiveMinPerLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefensiveBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefensiveMinPerLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TargetingBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FighterModPerLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HealthBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PainBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PainPerLevelNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualificationBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualificationPerLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentagePerLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClimbBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FallingBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JumpBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SneakingBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StealthBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TightropeBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickpocketBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExploreTrapBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShutterBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecureDoorSearchBasic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cube.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Psi1.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitiatingBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OffensiveBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OffensiveMinPerLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefensiveBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefensiveMinPerLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TargetingBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FighterModPerLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HealthBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PainBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PainPerLevelNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualificationBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualificationPerLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentagePerLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClimbBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FallingBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JumpBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SneakingBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StealthBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TightropeBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickpocketBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExploreTrapBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShutterBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecureDoorSearchBasic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cube.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Psi1.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

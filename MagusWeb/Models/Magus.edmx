@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MagusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Strength" Type="smallint" />
+          <Property Name="Stamina" Type="smallint" />
+          <Property Name="Agility" Type="smallint" />
+          <Property Name="Dexterity" Type="smallint" />
+          <Property Name="Health" Type="smallint" />
+          <Property Name="Beauty" Type="smallint" />
+          <Property Name="Intelligence" Type="smallint" />
+          <Property Name="Astral" Type="smallint" />
+          <Property Name="WillPower" Type="smallint" />
+          <Property Name="Detection" Type="smallint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Class" Type="int" />
+          <Property Name="Level" Type="smallint" />
+          <Property Name="Personality" Type="smallint" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Homeland" Type="nvarchar" MaxLength="50" />
+          <Property Name="School" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Height" Type="smallint" />
+          <Property Name="Weight" Type="smallint" />
+          <Property Name="Vitality" Type="smallint" />
+          <Property Name="Pain" Type="smallint" />
+          <Property Name="Specie" Type="int" />
+          <Property Name="Psi" Type="int" />
+        </EntityType>
+        <EntityType Name="Cube">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="10" />
+          <Property Name="CubeValue" Type="int" />
+        </EntityType>
+        <EntityType Name="MagusClass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="InitiatingBasic" Type="int" />
+          <Property Name="OffensiveBasic" Type="int" />
+          <Property Name="OffensiveMinPerLevel" Type="int" />
+          <Property Name="DefensiveBasic" Type="int" />
+          <Property Name="DefensiveMinPerLevel" Type="int" />
+          <Property Name="TargetingBasic" Type="int" />
+          <Property Name="FighterModPerLevel" Type="int" />
+          <Property Name="HealthBasic" Type="int" />
+          <Property Name="PainBasic" Type="int" />
+          <Property Name="PainPerLevelNumber" Type="int" />
+          <Property Name="PainPerLevelCube" Type="int" />
+          <Property Name="QualificationBasic" Type="int" />
+          <Property Name="QualificationPerLevel" Type="int" />
+          <Property Name="PercentagePerLevel" Type="int" />
+          <Property Name="Psi" Type="int" />
+          <Property Name="ClimbBasic" Type="int" />
+          <Property Name="FallingBasic" Type="int" />
+          <Property Name="JumpBasic" Type="int" />
+          <Property Name="SneakingBasic" Type="int" />
+          <Property Name="StealthBasic" Type="int" />
+          <Property Name="TightropeBasic" Type="int" />
+          <Property Name="PickpocketBasic" Type="int" />
+          <Property Name="ExploreTrapBasic" Type="int" />
+          <Property Name="ShutterBasic" Type="int" />
+          <Property Name="SecureDoorSearchBasic" Type="int" />
+        </EntityType>
+        <EntityType Name="Psi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Base" Type="smallint" />
+          <Property Name="Further" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StrengthModifier" Type="smallint" />
+          <Property Name="StaminaModifier" Type="smallint" />
+          <Property Name="AgilityModifier" Type="smallint" />
+          <Property Name="DexterityModifier" Type="smallint" />
+          <Property Name="HealthModifier" Type="smallint" />
+          <Property Name="BeautyModifier" Type="smallint" />
+          <Property Name="IntelligenceModifier" Type="smallint" />
+          <Property Name="AstralModifier" Type="smallint" />
+          <Property Name="WillPowerModifier" Type="smallint" />
+          <Property Name="StrengthMax" Type="smallint" />
+          <Property Name="StaminaMax" Type="smallint" />
+          <Property Name="AgilityMax" Type="smallint" />
+          <Property Name="DexterityMax" Type="smallint" />
+          <Property Name="HealthMax" Type="smallint" />
+          <Property Name="BeautyMax" Type="smallint" />
+          <Property Name="IntelligenceMax" Type="smallint" />
+          <Property Name="AstralMax" Type="smallint" />
+          <Property Name="WillPowerMax" Type="smallint" />
+          <Property Name="DetectionMax" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_Character_MagusClass">
+          <End Role="MagusClass" Type="Self.MagusClass" Multiplicity="0..1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagusClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="Class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Character_Psi">
+          <End Role="Psi" Type="Self.Psi" Multiplicity="0..1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Psi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="Psi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Character_Species">
+          <End Role="Species" Type="Self.Species" Multiplicity="0..1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="Specie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MagusClass_Cube">
+          <End Role="Cube" Type="Self.Cube" Multiplicity="0..1" />
+          <End Role="MagusClass" Type="Self.MagusClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cube">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MagusClass">
+              <PropertyRef Name="PainPerLevelCube" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MagusClass_Psi">
+          <End Role="Psi" Type="Self.Psi" Multiplicity="0..1" />
+          <End Role="MagusClass" Type="Self.MagusClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Psi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MagusClass">
+              <PropertyRef Name="Psi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MagusModelStoreContainer">
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cube" EntityType="Self.Cube" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MagusClass" EntityType="Self.MagusClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Psi" EntityType="Self.Psi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Character_MagusClass" Association="Self.FK_Character_MagusClass">
+            <End Role="MagusClass" EntitySet="MagusClass" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_Psi" Association="Self.FK_Character_Psi">
+            <End Role="Psi" EntitySet="Psi" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_Species" Association="Self.FK_Character_Species">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MagusClass_Cube" Association="Self.FK_MagusClass_Cube">
+            <End Role="Cube" EntitySet="Cube" />
+            <End Role="MagusClass" EntitySet="MagusClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MagusClass_Psi" Association="Self.FK_MagusClass_Psi">
+            <End Role="Psi" EntitySet="Psi" />
+            <End Role="MagusClass" EntitySet="MagusClass" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MagusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Strength" Type="Int16" />
+          <Property Name="Agility" Type="Int16" />
+          <Property Name="Dexterity" Type="Int16" />
+          <Property Name="Health" Type="Int16" />
+          <Property Name="Beauty" Type="Int16" />
+          <Property Name="Intelligence" Type="Int16" />
+          <Property Name="Astral" Type="Int16" />
+          <Property Name="WillPower" Type="Int16" />
+          <Property Name="Detection" Type="Int16" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="Int32" />
+          <Property Name="Level" Type="Int16" />
+          <Property Name="Personality" Type="Int16" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Homeland" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Height" Type="Int16" />
+          <Property Name="Weight" Type="Int16" />
+          <Property Name="Vitality" Type="Int16" />
+          <Property Name="Pain" Type="Int16" />
+          <Property Name="Specie" Type="Int32" />
+          <Property Name="Psi" Type="Int32" />
+          <NavigationProperty Name="Psi1" Relationship="Self.FK_Character_Psi" FromRole="Character" ToRole="Psi" />
+          <Property Name="Stamina" Type="Int16" />
+          <NavigationProperty Name="Species" Relationship="MagusModel.FK_Character_Species" FromRole="Character" ToRole="Species" />
+          <NavigationProperty Name="MagusClass" Relationship="MagusModel.FK_Character_MagusClass" FromRole="Character" ToRole="MagusClass" />
+        </EntityType>
+        <EntityType Name="Psi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Base" Type="Int16" />
+          <Property Name="Further" Type="Int16" />
+          <NavigationProperty Name="Character" Relationship="Self.FK_Character_Psi" FromRole="Psi" ToRole="Character" />
+          <NavigationProperty Name="MagusClass" Relationship="MagusModel.FK_MagusClass_Psi" FromRole="Psi" ToRole="MagusClass" />
+        </EntityType>
+        <Association Name="FK_Character_Psi">
+          <End Role="Psi" Type="Self.Psi" Multiplicity="0..1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Psi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="Psi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MagusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Character" EntityType="Self.Character" />
+          <EntitySet Name="Psi" EntityType="Self.Psi" />
+          <AssociationSet Name="FK_Character_Psi" Association="Self.FK_Character_Psi">
+            <End Role="Psi" EntitySet="Psi" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <EntitySet Name="Species" EntityType="MagusModel.Species" />
+          <AssociationSet Name="FK_Character_Species" Association="MagusModel.FK_Character_Species">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <EntitySet Name="MagusClass" EntityType="MagusModel.MagusClass" />
+          <AssociationSet Name="FK_Character_MagusClass" Association="MagusModel.FK_Character_MagusClass">
+            <End Role="MagusClass" EntitySet="MagusClass" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MagusClass_Psi" Association="MagusModel.FK_MagusClass_Psi">
+            <End Role="Psi" EntitySet="Psi" />
+            <End Role="MagusClass" EntitySet="MagusClass" />
+          </AssociationSet>
+          <EntitySet Name="Cube" EntityType="MagusModel.Cube" />
+          <AssociationSet Name="FK_MagusClass_Cube" Association="MagusModel.FK_MagusClass_Cube">
+            <End Role="Cube" EntitySet="Cube" />
+            <End Role="MagusClass" EntitySet="MagusClass" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StrengthModifier" Type="Int16" />
+          <Property Name="StaminaModifier" Type="Int16" />
+          <Property Name="AgilityModifier" Type="Int16" />
+          <Property Name="DexterityModifier" Type="Int16" />
+          <Property Name="HealthModifier" Type="Int16" />
+          <Property Name="BeautyModifier" Type="Int16" />
+          <Property Name="IntelligenceModifier" Type="Int16" />
+          <Property Name="AstralModifier" Type="Int16" />
+          <Property Name="WillPowerModifier" Type="Int16" />
+          <Property Name="StrengthMax" Type="Int16" />
+          <Property Name="StaminaMax" Type="Int16" />
+          <Property Name="AgilityMax" Type="Int16" />
+          <Property Name="DexterityMax" Type="Int16" />
+          <Property Name="HealthMax" Type="Int16" />
+          <Property Name="BeautyMax" Type="Int16" />
+          <Property Name="IntelligenceMax" Type="Int16" />
+          <Property Name="AstralMax" Type="Int16" />
+          <Property Name="WillPowerMax" Type="Int16" />
+          <Property Name="DetectionMax" Type="Int16" />
+          <NavigationProperty Name="Character" Relationship="MagusModel.FK_Character_Species" FromRole="Species" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK_Character_Species">
+          <End Type="MagusModel.Species" Role="Species" Multiplicity="0..1" />
+          <End Type="MagusModel.Character" Role="Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="Specie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MagusClass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InitiatingBasic" Type="Int32" />
+          <Property Name="OffensiveBasic" Type="Int32" />
+          <Property Name="OffensiveMinPerLevel" Type="Int32" />
+          <Property Name="DefensiveBasic" Type="Int32" />
+          <Property Name="DefensiveMinPerLevel" Type="Int32" />
+          <Property Name="TargetingBasic" Type="Int32" />
+          <Property Name="FighterModPerLevel" Type="Int32" />
+          <Property Name="HealthBasic" Type="Int32" />
+          <Property Name="PainBasic" Type="Int32" />
+          <Property Name="PainPerLevelNumber" Type="Int32" />
+          <Property Name="PainPerLevelCube" Type="Int32" />
+          <Property Name="QualificationBasic" Type="Int32" />
+          <Property Name="QualificationPerLevel" Type="Int32" />
+          <Property Name="PercentagePerLevel" Type="Int32" />
+          <Property Name="Psi" Type="Int32" />
+          <Property Name="ClimbBasic" Type="Int32" />
+          <Property Name="FallingBasic" Type="Int32" />
+          <Property Name="JumpBasic" Type="Int32" />
+          <Property Name="SneakingBasic" Type="Int32" />
+          <Property Name="StealthBasic" Type="Int32" />
+          <Property Name="TightropeBasic" Type="Int32" />
+          <Property Name="PickpocketBasic" Type="Int32" />
+          <Property Name="ExploreTrapBasic" Type="Int32" />
+          <Property Name="ShutterBasic" Type="Int32" />
+          <Property Name="SecureDoorSearchBasic" Type="Int32" />
+          <NavigationProperty Name="Character" Relationship="MagusModel.FK_Character_MagusClass" FromRole="MagusClass" ToRole="Character" />
+          <NavigationProperty Name="Psi1" Relationship="MagusModel.FK_MagusClass_Psi" FromRole="MagusClass" ToRole="Psi" />
+          <NavigationProperty Name="Cube" Relationship="MagusModel.FK_MagusClass_Cube" FromRole="MagusClass" ToRole="Cube" />
+        </EntityType>
+        <Association Name="FK_Character_MagusClass">
+          <End Type="MagusModel.MagusClass" Role="MagusClass" Multiplicity="0..1" />
+          <End Type="MagusModel.Character" Role="Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagusClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="Class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MagusClass_Psi">
+          <End Type="MagusModel.Psi" Role="Psi" Multiplicity="0..1" />
+          <End Type="MagusModel.MagusClass" Role="MagusClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Psi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MagusClass">
+              <PropertyRef Name="Psi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cube">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CubeValue" Type="Int32" />
+          <NavigationProperty Name="MagusClass" Relationship="MagusModel.FK_MagusClass_Cube" FromRole="Cube" ToRole="MagusClass" />
+        </EntityType>
+        <Association Name="FK_MagusClass_Cube">
+          <End Type="MagusModel.Cube" Role="Cube" Multiplicity="0..1" />
+          <End Type="MagusModel.MagusClass" Role="MagusClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cube">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MagusClass">
+              <PropertyRef Name="PainPerLevelCube" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MagusModelStoreContainer" CdmEntityContainer="MagusEntities">
+          <EntitySetMapping Name="Character">
+            <EntityTypeMapping TypeName="MagusModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="Stamina" ColumnName="Stamina" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="Agility" ColumnName="Agility" />
+                <ScalarProperty Name="Dexterity" ColumnName="Dexterity" />
+                <ScalarProperty Name="Health" ColumnName="Health" />
+                <ScalarProperty Name="Beauty" ColumnName="Beauty" />
+                <ScalarProperty Name="Intelligence" ColumnName="Intelligence" />
+                <ScalarProperty Name="Astral" ColumnName="Astral" />
+                <ScalarProperty Name="WillPower" ColumnName="WillPower" />
+                <ScalarProperty Name="Detection" ColumnName="Detection" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Personality" ColumnName="Personality" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Homeland" ColumnName="Homeland" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Vitality" ColumnName="Vitality" />
+                <ScalarProperty Name="Pain" ColumnName="Pain" />
+                <ScalarProperty Name="Specie" ColumnName="Specie" />
+                <ScalarProperty Name="Psi" ColumnName="Psi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Psi">
+            <EntityTypeMapping TypeName="MagusModel.Psi">
+              <MappingFragment StoreEntitySet="Psi">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Base" ColumnName="Base" />
+                <ScalarProperty Name="Further" ColumnName="Further" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Species">
+            <EntityTypeMapping TypeName="MagusModel.Species">
+              <MappingFragment StoreEntitySet="Species">
+                <ScalarProperty Name="DetectionMax" ColumnName="DetectionMax" />
+                <ScalarProperty Name="WillPowerMax" ColumnName="WillPowerMax" />
+                <ScalarProperty Name="AstralMax" ColumnName="AstralMax" />
+                <ScalarProperty Name="IntelligenceMax" ColumnName="IntelligenceMax" />
+                <ScalarProperty Name="BeautyMax" ColumnName="BeautyMax" />
+                <ScalarProperty Name="HealthMax" ColumnName="HealthMax" />
+                <ScalarProperty Name="DexterityMax" ColumnName="DexterityMax" />
+                <ScalarProperty Name="AgilityMax" ColumnName="AgilityMax" />
+                <ScalarProperty Name="StaminaMax" ColumnName="StaminaMax" />
+                <ScalarProperty Name="StrengthMax" ColumnName="StrengthMax" />
+                <ScalarProperty Name="WillPowerModifier" ColumnName="WillPowerModifier" />
+                <ScalarProperty Name="AstralModifier" ColumnName="AstralModifier" />
+                <ScalarProperty Name="IntelligenceModifier" ColumnName="IntelligenceModifier" />
+                <ScalarProperty Name="BeautyModifier" ColumnName="BeautyModifier" />
+                <ScalarProperty Name="HealthModifier" ColumnName="HealthModifier" />
+                <ScalarProperty Name="DexterityModifier" ColumnName="DexterityModifier" />
+                <ScalarProperty Name="AgilityModifier" ColumnName="AgilityModifier" />
+                <ScalarProperty Name="StaminaModifier" ColumnName="StaminaModifier" />
+                <ScalarProperty Name="StrengthModifier" ColumnName="StrengthModifier" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MagusClass">
+            <EntityTypeMapping TypeName="MagusModel.MagusClass">
+              <MappingFragment StoreEntitySet="MagusClass">
+                <ScalarProperty Name="SecureDoorSearchBasic" ColumnName="SecureDoorSearchBasic" />
+                <ScalarProperty Name="ShutterBasic" ColumnName="ShutterBasic" />
+                <ScalarProperty Name="ExploreTrapBasic" ColumnName="ExploreTrapBasic" />
+                <ScalarProperty Name="PickpocketBasic" ColumnName="PickpocketBasic" />
+                <ScalarProperty Name="TightropeBasic" ColumnName="TightropeBasic" />
+                <ScalarProperty Name="StealthBasic" ColumnName="StealthBasic" />
+                <ScalarProperty Name="SneakingBasic" ColumnName="SneakingBasic" />
+                <ScalarProperty Name="JumpBasic" ColumnName="JumpBasic" />
+                <ScalarProperty Name="FallingBasic" ColumnName="FallingBasic" />
+                <ScalarProperty Name="ClimbBasic" ColumnName="ClimbBasic" />
+                <ScalarProperty Name="Psi" ColumnName="Psi" />
+                <ScalarProperty Name="PercentagePerLevel" ColumnName="PercentagePerLevel" />
+                <ScalarProperty Name="QualificationPerLevel" ColumnName="QualificationPerLevel" />
+                <ScalarProperty Name="QualificationBasic" ColumnName="QualificationBasic" />
+                <ScalarProperty Name="PainPerLevelCube" ColumnName="PainPerLevelCube" />
+                <ScalarProperty Name="PainPerLevelNumber" ColumnName="PainPerLevelNumber" />
+                <ScalarProperty Name="PainBasic" ColumnName="PainBasic" />
+                <ScalarProperty Name="HealthBasic" ColumnName="HealthBasic" />
+                <ScalarProperty Name="FighterModPerLevel" ColumnName="FighterModPerLevel" />
+                <ScalarProperty Name="TargetingBasic" ColumnName="TargetingBasic" />
+                <ScalarProperty Name="DefensiveMinPerLevel" ColumnName="DefensiveMinPerLevel" />
+                <ScalarProperty Name="DefensiveBasic" ColumnName="DefensiveBasic" />
+                <ScalarProperty Name="OffensiveMinPerLevel" ColumnName="OffensiveMinPerLevel" />
+                <ScalarProperty Name="OffensiveBasic" ColumnName="OffensiveBasic" />
+                <ScalarProperty Name="InitiatingBasic" ColumnName="InitiatingBasic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cube">
+            <EntityTypeMapping TypeName="MagusModel.Cube">
+              <MappingFragment StoreEntitySet="Cube">
+                <ScalarProperty Name="CubeValue" ColumnName="CubeValue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

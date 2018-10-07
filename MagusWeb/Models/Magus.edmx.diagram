@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c18709440294bb8a6d07096e7eb67c1" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="MagusModel.Character" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagusModel.Psi" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="MagusModel.FK_Character_Psi" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MagusModel.Species" Width="1.5" PointX="0.75" PointY="7.625" />
+        <AssociationConnector Association="MagusModel.FK_Character_Species" />
+        <EntityTypeShape EntityType="MagusModel.MagusClass" Width="1.5" PointX="6" PointY="3.875" />
+        <AssociationConnector Association="MagusModel.FK_Character_MagusClass" />
+        <AssociationConnector Association="MagusModel.FK_MagusClass_Psi" />
+        <EntityTypeShape EntityType="MagusModel.Cube" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="MagusModel.FK_MagusClass_Cube" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
